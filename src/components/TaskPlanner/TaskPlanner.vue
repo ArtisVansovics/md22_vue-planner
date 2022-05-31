@@ -1,27 +1,56 @@
 <template>
   <div class="planner">
-    <input class="input" type="text" v-model="inputValue" />
-    <button class="button" @click="addTask()">Add</button>
+    <label class="label">
+      <input class="input" type="text" v-model="inputValue" />
+      <button class="button" @click="addTask()">Add</button>
+    </label>
     <div class="task" v-for="task in tasks" :key="task">
-      {{ task }}
+      <button>v</button>
+      {{ task.title }}
+      {{ task.id }}
+      <button class="button button--delete" @click="deleteTask(task.id)">
+        X
+      </button>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+type Task = {
+  id: number;
+  title: string;
+  done: boolean;
+};
+
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "TaskPlanner",
   data: () => ({
     inputValue: "",
-    tasks: [],
+    tasks: [] as Task[],
+    id: 0,
   }),
   methods: {
+    // test() {
+    //   console.log(this.tasks);
+    // },
     addTask() {
-      this.tasks.push(this.inputValue);
+      this.tasks.push({
+        id: (this.id += 1),
+        title: this.inputValue,
+        done: false,
+      });
       this.inputValue = "";
     },
+    deleteTask(id: number) {
+      this.tasks = this.tasks.filter((task) => task.id !== id);
+    },
+    // toggleComplete(title: string) {
+    //   this.tasks = this.tasks.map((task) => {
+    //     if ()
+    //   });
+    // },
   },
 });
 </script>
