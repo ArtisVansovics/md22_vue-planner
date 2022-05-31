@@ -5,9 +5,10 @@
       <button class="button" @click="addTask()">Add</button>
     </label>
     <div class="task" v-for="task in tasks" :key="task">
-      <button>v</button>
-      {{ task.title }}
-      {{ task.id }}
+      <button class="button button--toggle" @click="toggleComplete(task.id)">
+        v
+      </button>
+      <p class="title" :class="{ active: task.done }">{{ task.title }}</p>
       <button class="button button--delete" @click="deleteTask(task.id)">
         X
       </button>
@@ -46,11 +47,17 @@ export default defineComponent({
     deleteTask(id: number) {
       this.tasks = this.tasks.filter((task) => task.id !== id);
     },
-    // toggleComplete(title: string) {
-    //   this.tasks = this.tasks.map((task) => {
-    //     if ()
-    //   });
-    // },
+    toggleComplete(id: number) {
+      this.tasks = this.tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            done: !task.done,
+          };
+        }
+        return task;
+      });
+    },
   },
 });
 </script>
