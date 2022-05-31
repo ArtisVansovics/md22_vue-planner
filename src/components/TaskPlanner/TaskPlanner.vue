@@ -4,7 +4,7 @@
       <input class="input" type="text" v-model="inputValue" />
       <button class="button" @click="addTask()">Add</button>
     </label>
-    <div class="task" v-for="task in tasks" :key="task">
+    <div class="task" v-for="task in visibleTasks" :key="task">
       <button class="button button--toggle" @click="toggleComplete(task.id)">
         v
       </button>
@@ -13,6 +13,9 @@
         X
       </button>
     </div>
+    <button class="button" @click="setFilter('all')">All</button>
+    <button class="button" @click="setFilter('inProgress')">In progress</button>
+    <button class="button" @click="setFilter('completed')">Completed</button>
   </div>
 </template>
 
@@ -30,6 +33,7 @@ export default defineComponent({
   data: () => ({
     inputValue: "",
     tasks: [] as Task[],
+    filter: "all",
     id: 0,
   }),
   methods: {
@@ -57,6 +61,24 @@ export default defineComponent({
         }
         return task;
       });
+    },
+    setFilter(value: string) {
+      this.filter = value;
+    },
+  },
+  computed: {
+    visibleTasks() {
+      let filteredTasks;
+
+      if (this.filter === "all") {
+        filteredTasks = this.tasks;
+      } else if (this.filter === "inProgress") {
+        filteredTasks = this.tasks.filter((task) => !task.done);
+      } else if (this.filter === "completed") {
+        filteredTasks = this.tasks.filter((task) => task.done);
+      }
+
+      return filteredTasks;
     },
   },
 });
