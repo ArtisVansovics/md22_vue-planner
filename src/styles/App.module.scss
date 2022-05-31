@@ -1,12 +1,26 @@
 nav {
+  height: 10vh;
   padding: 30px;
+  text-align: center;
+  background-color: #DCF2E6;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #374019;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #8CBF1F;
     }
   }
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 30px;
+  background-color: #DCF2E6;
+  color: #374019;
 }
