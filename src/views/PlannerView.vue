@@ -1,13 +1,15 @@
 <template>
   <div class="wrapper">
-    <h1>Planner</h1>
+    <TaskPlanner />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TaskPlanner from "@/components/TaskPlanner/TaskPlanner.vue";
 
 export default defineComponent({
   name: "PlannerView",
+  components: { TaskPlanner },
 });
 </script>
