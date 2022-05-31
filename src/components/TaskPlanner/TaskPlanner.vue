@@ -1,36 +1,44 @@
 <template>
   <div class="planner">
     <form class="form" v-on:submit.prevent="addTask()">
-      <input class="input" type="text" v-model="inputValue" />
+      <input
+        class="input"
+        type="text"
+        placeholder="Your task"
+        v-model="inputValue"
+      />
       <button class="button" v-bind:disabled="inputValue === ''">Add</button>
     </form>
     <div class="task" v-for="task in visibleTasks" :key="task">
-      <button class="button button--toggle" @click="toggleComplete(task.id)">
-        v
-      </button>
+      <button
+        :class="[{ doneCheck: task.done }, 'button button--toggle']"
+        @click="toggleComplete(task.id)"
+      ></button>
       <p :class="[{ doneTask: task.done }, 'title']">{{ task.title }}</p>
       <button class="button button--delete" @click="deleteTask(task.id)">
         X
       </button>
     </div>
-    <button
-      :class="[filter === 'all' ? 'selectedFilter' : '', 'button']"
-      @click="setFilter('all')"
-    >
-      All
-    </button>
-    <button
-      :class="[filter === 'inProgress' ? 'selectedFilter' : '', 'button']"
-      @click="setFilter('inProgress')"
-    >
-      In progress
-    </button>
-    <button
-      :class="[filter === 'completed' ? 'selectedFilter' : '', 'button']"
-      @click="setFilter('completed')"
-    >
-      Completed
-    </button>
+    <div class="row-buttons">
+      <button
+        :class="[filter === 'all' ? 'selectedFilter' : '', 'button']"
+        @click="setFilter('all')"
+      >
+        All
+      </button>
+      <button
+        :class="[filter === 'inProgress' ? 'selectedFilter' : '', 'button']"
+        @click="setFilter('inProgress')"
+      >
+        In progress
+      </button>
+      <button
+        :class="[filter === 'completed' ? 'selectedFilter' : '', 'button']"
+        @click="setFilter('completed')"
+      >
+        Completed
+      </button>
+    </div>
   </div>
 </template>
 
