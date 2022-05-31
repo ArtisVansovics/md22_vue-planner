@@ -19,9 +19,18 @@
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 10px;
-  background-color: #A7BF95;
+  background-color: #6BCCF2;
 }
 
-.active {
+.button {
+  background-color: #A7BF95;
+  border: none;
+}
+
+.doneTask {
   text-decoration: line-through;
+}
+
+.selectedFilter {
+  background-color: #8CBF1F;
 }

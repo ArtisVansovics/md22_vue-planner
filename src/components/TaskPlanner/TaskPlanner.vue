@@ -8,14 +8,29 @@
       <button class="button button--toggle" @click="toggleComplete(task.id)">
         v
       </button>
-      <p class="title" :class="{ active: task.done }">{{ task.title }}</p>
+      <p :class="[{ doneTask: task.done }, 'title']">{{ task.title }}</p>
       <button class="button button--delete" @click="deleteTask(task.id)">
         X
       </button>
     </div>
-    <button class="button" @click="setFilter('all')">All</button>
-    <button class="button" @click="setFilter('inProgress')">In progress</button>
-    <button class="button" @click="setFilter('completed')">Completed</button>
+    <button
+      :class="[filter === 'all' ? 'selectedFilter' : '', 'button']"
+      @click="setFilter('all')"
+    >
+      All
+    </button>
+    <button
+      :class="[filter === 'inProgress' ? 'selectedFilter' : '', 'button']"
+      @click="setFilter('inProgress')"
+    >
+      In progress
+    </button>
+    <button
+      :class="[filter === 'completed' ? 'selectedFilter' : '', 'button']"
+      @click="setFilter('completed')"
+    >
+      Completed
+    </button>
   </div>
 </template>
 
@@ -37,9 +52,6 @@ export default defineComponent({
     id: 0,
   }),
   methods: {
-    // test() {
-    //   console.log(this.tasks);
-    // },
     addTask() {
       this.tasks.push({
         id: (this.id += 1),
@@ -66,6 +78,7 @@ export default defineComponent({
       this.filter = value;
     },
   },
+  // use computed to set properties, that respond to changes in their dependencies
   computed: {
     visibleTasks() {
       let filteredTasks;
