@@ -1,9 +1,9 @@
 <template>
   <div class="planner">
-    <label class="label">
+    <form class="form" v-on:submit.prevent="addTask()">
       <input class="input" type="text" v-model="inputValue" />
-      <button class="button" @click="addTask()">Add</button>
-    </label>
+      <button class="button" v-bind:disabled="inputValue === ''">Add</button>
+    </form>
     <div class="task" v-for="task in visibleTasks" :key="task">
       <button class="button button--toggle" @click="toggleComplete(task.id)">
         v
