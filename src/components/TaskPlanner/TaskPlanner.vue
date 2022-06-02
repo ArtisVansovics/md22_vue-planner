@@ -10,11 +10,16 @@
       <button class="button" v-bind:disabled="inputValue === ''">Add</button>
     </form>
     <div class="task" v-for="task in visibleTasks" :key="task">
-      <button
-        :class="[{ doneCheck: task.done }, 'button button--toggle']"
-        @click="toggleComplete(task.id)"
-      ></button>
-      <p :class="[{ doneTask: task.done }, 'title']">{{ task.title }}</p>
+      <label class="label">
+        <input
+          :class="['checkbox', { doneCheck: task.done }]"
+          type="checkbox"
+          @click="toggleComplete(task.id)"
+        />
+        <span :class="['title', { doneTask: task.done }]">{{
+          task.title
+        }}</span>
+      </label>
       <button class="button button--delete" @click="deleteTask(task.id)">
         X
       </button>

@@ -46,6 +46,26 @@
   background-color: #435914;
 }
 
+.label {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  border-radius: 2px;
+  border: #648C81 2px solid;
+  padding: 10px;
+  background-color: #DCF2E6;
+}
+
 .title {
   text-align: left;
 }
@@ -96,14 +116,6 @@
   position: absolute;
   top: 0;
   right: 4px;
-}
-
-.button--toggle {
-  position: relative;
-  border-radius: 2px;
-  border: #648C81 2px solid;
-  padding: 10px;
-  background-color: #DCF2E6;
 }
 
 .doneTask {
