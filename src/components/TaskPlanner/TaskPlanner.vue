@@ -107,5 +107,5 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "TaskPlanner.module.scss";
+@import "TaskPlanner.module";
 </style>

@@ -8,6 +8,11 @@
   background-color: #648C81;
   color: #DCF2E6;
   border-radius: 15px 5px;
+  box-shadow: #374019 0 0 10px 3px;
+
+  @media screen and (max-width: 480px) {
+    padding: 30px 20px;
+  }
 }
 
 .row-buttons {
@@ -15,6 +20,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   padding-top: 10px;
+
+   @media screen and (max-width: 480px){
+     grid-template-columns: 1fr;
+   }
 }
 
 .form {
@@ -26,11 +35,11 @@
 
 .task {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-items: left;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  padding: 20px 20px 15px 10px;
+  padding: 20px 20px 20px 10px;
   border-radius: 5px;
   position: relative;
   font-size: 18px;
