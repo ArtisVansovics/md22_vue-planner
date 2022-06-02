@@ -2,7 +2,7 @@
   <div class="planner">
     <form class="form" v-on:submit.prevent="addTask()">
       <input
-        class="input"
+        class="form__input"
         type="text"
         placeholder="Your task"
         v-model="inputValue"
@@ -10,21 +10,21 @@
       <button class="button" v-bind:disabled="inputValue === ''">Add</button>
     </form>
     <div class="task" v-for="task in visibleTasks" :key="task">
-      <label class="label">
+      <label class="task__label">
         <input
-          :class="['checkbox', { doneCheck: task.done }]"
+          :class="['task__checkbox', { doneCheck: task.done }]"
           type="checkbox"
           @click="toggleComplete(task.id)"
         />
-        <span :class="['title', { doneTask: task.done }]">{{
-          task.title
-        }}</span>
+        <span :class="['task__title', { doneTask: task.done }]">
+          {{ task.title }}
+        </span>
       </label>
       <button class="button button--delete" @click="deleteTask(task.id)">
         X
       </button>
     </div>
-    <div class="row-buttons">
+    <div class="row">
       <button
         v-for="buttonFilter in buttonFilters"
         :class="[
@@ -32,6 +32,7 @@
           filter === buttonFilter.value ? 'selectedFilter' : '',
         ]"
         @click="setFilter(buttonFilter.value)"
+        v-bind:disabled="tasks.length === 0"
         :key="buttonFilter.value"
       >
         {{ buttonFilter.name }}

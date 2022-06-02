@@ -1,10 +1,10 @@
 <template>
   <div class="services">
-    <h1 class="title">Services</h1>
+    <h1 class="task__title">Services</h1>
     <div
+      v-for="service in services"
       :class="['box', { selected: service.selected }]"
       @click="handleClick(service.title)"
-      v-for="service in services"
       :key="service"
     >
       <p>{{ service.title }}</p>
