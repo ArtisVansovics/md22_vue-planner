@@ -4,10 +4,14 @@
       <input
         class="form__input"
         type="text"
+        minlength="3"
+        maxlength="30"
         placeholder="Your task"
         v-model="inputValue"
       />
-      <button class="button" v-bind:disabled="inputValue === ''">Add</button>
+      <button class="button" v-bind:disabled="inputValue.length === 0">
+        Add
+      </button>
     </form>
     <div class="task" v-for="task in visibleTasks" :key="task">
       <label class="task__label">
