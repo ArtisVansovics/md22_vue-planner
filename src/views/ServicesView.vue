@@ -1,13 +1,15 @@
 <template>
   <div class="wrapper">
-    <h1>Services</h1>
+    <ServicesSelection />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import ServicesSelection from "@/components/ServiceSelection/ServiceSelection.vue";
 
 export default defineComponent({
   name: "ServicesView",
+  components: { ServicesSelection },
 });
 </script>

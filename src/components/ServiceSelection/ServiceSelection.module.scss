@@ -1,0 +1,17 @@
+.services {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 30px 40px;
+  font-size: 18px;
+  background-color: #374019;
+  color: #DCF2E6;
+  border-radius: 10px;
+}
+
+.services__title {
+  font-size: 30px;
+  color: #6BCCF2;
+  padding-bottom: 20px;
+}

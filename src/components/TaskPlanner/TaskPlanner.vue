@@ -43,13 +43,13 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
+
 type Task = {
   id: number;
   title: string;
   done: boolean;
 };
-
-import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "TaskPlanner",
