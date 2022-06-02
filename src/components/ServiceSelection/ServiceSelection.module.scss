@@ -4,14 +4,27 @@
   align-items: stretch;
   gap: 10px;
   padding: 30px 40px;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 20px;
   background-color: #374019;
   color: #DCF2E6;
   border-radius: 10px;
 }
 
 .services__title {
-  font-size: 30px;
+  font-size: 35px;
+  text-align: center;
   color: #6BCCF2;
   padding-bottom: 20px;
+}
+
+.services__box {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 60px;
+  border-radius: 30px;
+  padding: 20px 30px;
+  background-color: #A7BF95;
+  cursor: pointer;
 }

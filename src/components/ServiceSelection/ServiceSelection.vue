@@ -1,6 +1,10 @@
 <template>
   <div class="services">
-    <h1 class="services__title">Services box</h1>
+    <h1 class="services__title">Services</h1>
+    <div class="services__box" v-for="service in servicesAll" :key="service">
+      <p>{{ service.title }}</p>
+      <p>{{ `$${service.cost.toFixed(2)}` }}</p>
+    </div>
   </div>
 </template>
 
