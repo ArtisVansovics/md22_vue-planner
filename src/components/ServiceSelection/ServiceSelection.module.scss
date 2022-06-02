@@ -11,14 +11,20 @@
   border-radius: 10px;
 }
 
-.services__title {
+.line {
+  width: 100%;
+  border: none;
+  border-bottom: #648C81 3px solid;
+}
+
+.title {
   font-size: 35px;
   text-align: center;
   color: #6BCCF2;
   padding-bottom: 20px;
 }
 
-.services__box {
+.box {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -27,4 +33,15 @@
   padding: 20px 30px;
   background-color: #A7BF95;
   cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.selected {
+  background-color: #8CBF1F;
 }

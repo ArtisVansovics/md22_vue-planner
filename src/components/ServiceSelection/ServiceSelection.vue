@@ -1,10 +1,20 @@
 <template>
   <div class="services">
-    <h1 class="services__title">Services</h1>
-    <div class="services__box" v-for="service in servicesAll" :key="service">
+    <h1 class="title">Services</h1>
+    <div
+      :class="['box', { selected: service.selected }]"
+      @click="handleClick(service.title)"
+      v-for="service in services"
+      :key="service"
+    >
       <p>{{ service.title }}</p>
       <p>{{ `$${service.cost.toFixed(2)}` }}</p>
     </div>
+    <hr class="line" />
+    <!--    <div class="row">-->
+    <!--      <p>Total:</p>-->
+    <!--      <p>{{`$${}`}}</p>-->
+    <!--    </div>-->
   </div>
 </template>
 
@@ -20,7 +30,7 @@ type Service = {
 export default defineComponent({
   name: "ServicesSelection",
   data: () => ({
-    servicesAll: [
+    services: [
       {
         title: "Web Development",
         cost: 300.0,
@@ -43,6 +53,19 @@ export default defineComponent({
       },
     ],
   }),
+  methods: {
+    handleClick(title: string) {
+      this.services = this.services.map((service) => {
+        if (service.title === title) {
+          return {
+            ...service,
+            selected: !service.selected,
+          };
+        }
+        return service;
+      });
+    },
+  },
 });
 </script>
 
