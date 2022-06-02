@@ -11,21 +11,15 @@
       <p>{{ `$${service.cost.toFixed(2)}` }}</p>
     </div>
     <hr class="line" />
-    <!--    <div class="row">-->
-    <!--      <p>Total:</p>-->
-    <!--      <p>{{`$${}`}}</p>-->
-    <!--    </div>-->
+    <div class="row">
+      <p>Total:</p>
+      <p>{{ `$${totalCost.toFixed(2)}` }}</p>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-
-type Service = {
-  title: string;
-  cost: number;
-  selected: boolean;
-};
 
 export default defineComponent({
   name: "ServicesSelection",
@@ -64,6 +58,17 @@ export default defineComponent({
         }
         return service;
       });
+    },
+  },
+  computed: {
+    totalCost() {
+      let costArr = this.services.map((service) => {
+        if (service.selected) {
+          return service.cost;
+        }
+        return 0;
+      });
+      return costArr.reduce((a, b) => a + b);
     },
   },
 });

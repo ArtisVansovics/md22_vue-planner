@@ -3,7 +3,7 @@
   flex-flow: column;
   align-items: stretch;
   gap: 10px;
-  padding: 30px 40px;
+  padding: 30px 50px 40px;
   font-weight: 600;
   font-size: 20px;
   background-color: #374019;
@@ -40,6 +40,9 @@
   flex-flow: row wrap;
   justify-content: space-between;
   gap: 60px;
+  padding: 0 35px;
+  line-height: 1;
+  color: #6A8C20;
 }
 
 .selected {
