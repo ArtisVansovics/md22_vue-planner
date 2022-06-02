@@ -21,22 +21,15 @@
     </div>
     <div class="row-buttons">
       <button
-        :class="[filter === 'all' ? 'selectedFilter' : '', 'button']"
-        @click="setFilter('all')"
+        v-for="buttonFilter in buttonFilters"
+        :class="[
+          'button',
+          filter === buttonFilter.value ? 'selectedFilter' : '',
+        ]"
+        @click="setFilter(buttonFilter.value)"
+        :key="buttonFilter.value"
       >
-        All
-      </button>
-      <button
-        :class="[filter === 'inProgress' ? 'selectedFilter' : '', 'button']"
-        @click="setFilter('inProgress')"
-      >
-        In progress
-      </button>
-      <button
-        :class="[filter === 'completed' ? 'selectedFilter' : '', 'button']"
-        @click="setFilter('completed')"
-      >
-        Completed
+        {{ buttonFilter.name }}
       </button>
     </div>
   </div>
@@ -58,6 +51,20 @@ export default defineComponent({
     tasks: [] as Task[],
     filter: "all",
     id: 0,
+    buttonFilters: [
+      {
+        value: "all",
+        name: "All",
+      },
+      {
+        value: "inProgress",
+        name: "In Progress",
+      },
+      {
+        value: "completed",
+        name: "Completed",
+      },
+    ],
   }),
   methods: {
     addTask() {
