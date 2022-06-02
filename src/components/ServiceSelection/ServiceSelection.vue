@@ -5,7 +5,7 @@
       v-for="service in services"
       :class="['box', { selected: service.selected }]"
       @click="handleClick(service.title)"
-      :key="service"
+      :key="service.title"
     >
       <p>{{ service.title }}</p>
       <p>{{ `$${service.cost.toFixed(2)}` }}</p>

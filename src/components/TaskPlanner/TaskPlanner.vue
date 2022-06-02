@@ -13,7 +13,7 @@
         Add
       </button>
     </form>
-    <div class="task" v-for="task in visibleTasks" :key="task">
+    <div class="task" v-for="task in visibleTasks" :key="task.title">
       <label class="task__label">
         <input
           :class="['task__checkbox', { doneCheck: task.done }]"
