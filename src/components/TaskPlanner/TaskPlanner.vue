@@ -11,7 +11,7 @@
       />
       <button class="button" v-bind:disabled="!inputValue.length">Add</button>
     </form>
-    <div class="task" v-for="task in visibleTasks" :key="task.title">
+    <div class="task" v-for="task in visibleTasks" :key="task.id">
       <label class="task__label">
         <input
           :class="['task__checkbox', { doneCheck: task.done }]"
@@ -28,16 +28,13 @@
     </div>
     <div class="row">
       <button
-        v-for="buttonFilter in buttonFilters"
-        :class="[
-          'button',
-          filter === buttonFilter.value ? 'selectedFilter' : '',
-        ]"
-        @click="setFilter(buttonFilter.value)"
+        v-for="{ value, name } in buttonFilters"
+        :class="['button', filter === value ? 'selectedFilter' : '']"
+        @click="setFilter(value)"
         v-bind:disabled="tasks.length === 0"
-        :key="buttonFilter.value"
+        :key="value"
       >
-        {{ buttonFilter.name }}
+        {{ name }}
       </button>
     </div>
   </div>
