@@ -4,7 +4,7 @@
     <div
       v-for="service in services"
       :class="['box', { selected: service.selected }]"
-      @click="handleClick(service.title)"
+      @click="setSelected(service)"
       :key="service.title"
     >
       <p>{{ service.title }}</p>
@@ -48,16 +48,8 @@ export default defineComponent({
     ],
   }),
   methods: {
-    handleClick(title: string) {
-      this.services = this.services.map((service) => {
-        if (service.title === title) {
-          return {
-            ...service,
-            selected: !service.selected,
-          };
-        }
-        return service;
-      });
+    setSelected(service: { selected: boolean }) {
+      service.selected = !service.selected;
     },
   },
   computed: {

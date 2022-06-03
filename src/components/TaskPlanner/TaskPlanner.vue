@@ -16,7 +16,7 @@
         <input
           :class="['task__checkbox', { doneCheck: task.done }]"
           type="checkbox"
-          @click="toggleComplete(task.id)"
+          @click="toggleComplete(task)"
         />
         <span :class="['task__title', { doneTask: task.done }]">
           {{ task.title }}
@@ -94,17 +94,8 @@ export default defineComponent({
     deleteTask(id: number) {
       this.tasks = this.tasks.filter((task) => task.id !== id);
     },
-    toggleComplete(id: number) {
-      this.tasks = this.tasks.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            done: !task.done,
-          };
-        }
-
-        return task;
-      });
+    toggleComplete(task: { done: boolean }) {
+      task.done = !task.done;
     },
     setFilter(value: Filters) {
       this.filter = value;
@@ -113,7 +104,7 @@ export default defineComponent({
   // use computed to set properties, that respond to changes in their dependencies
   computed: {
     visibleTasks() {
-      let filteredTasks;
+      let filteredTasks = [] as Task[];
 
       if (this.filter === "all") {
         filteredTasks = this.tasks;
