@@ -9,9 +9,7 @@
         placeholder="Your task"
         v-model="inputValue"
       />
-      <button class="button" v-bind:disabled="inputValue.length === 0">
-        Add
-      </button>
+      <button class="button" v-bind:disabled="!inputValue.length">Add</button>
     </form>
     <div class="task" v-for="task in visibleTasks" :key="task.title">
       <label class="task__label">
@@ -54,12 +52,19 @@ type Task = {
   done: boolean;
 };
 
+type ButtonFilter = {
+  value: Filters;
+  name: string;
+};
+
+type Filters = "all" | "inProgress" | "completed";
+
 export default defineComponent({
   name: "TaskPlanner",
   data: () => ({
     inputValue: "",
     tasks: [] as Task[],
-    filter: "all",
+    filter: "all" as Filters,
     id: 0,
     buttonFilters: [
       {
@@ -74,7 +79,7 @@ export default defineComponent({
         value: "completed",
         name: "Completed",
       },
-    ],
+    ] as ButtonFilter[],
   }),
   methods: {
     addTask() {
@@ -83,6 +88,7 @@ export default defineComponent({
         title: this.inputValue,
         done: false,
       });
+
       this.inputValue = "";
     },
     deleteTask(id: number) {
@@ -96,10 +102,11 @@ export default defineComponent({
             done: !task.done,
           };
         }
+
         return task;
       });
     },
-    setFilter(value: string) {
+    setFilter(value: Filters) {
       this.filter = value;
     },
   },
